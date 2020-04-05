@@ -4,9 +4,20 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+
+// 引入格式化时间的插件
+import moment from 'moment'
+// 定义全局的时间过滤器
+Vue.filter('dataFormat', function (dataStr, pattern="YYYY-MM-DD HH:mm:ss") {
+  return moment(dataStr).format(pattern)
+})
+
+
 // 导入 vue-resource,并且使用
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
+// 设置请求的根路径
+Vue.http.options.root = 'http://vue.studyit.io';
 
 // 导入 MUI 样式
 import './lib/mui/css/mui.min.css'
