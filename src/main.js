@@ -26,10 +26,19 @@ import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
 
 // 按需导入 Mint-UI 中的组件
-import { Header, Swipe, SwipeItem } from 'mint-ui'
-Vue.component(Header.name, Header)
-Vue.component(Swipe.name, Swipe)
-Vue.component(SwipeItem.name, SwipeItem)
+// import { Header, Swipe, SwipeItem, Lazyload } from 'mint-ui'
+// Vue.component(Header.name, Header)
+// Vue.component(Swipe.name, Swipe)
+// Vue.component(SwipeItem.name, SwipeItem)
+// Vue.use(Lazyload)
+// 全局导入 Mint-UI 
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.use(MintUI)
+
+// 引入图片预览插件
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
 
 // 导入 router.js 路由模块
 import router from './router.js'
