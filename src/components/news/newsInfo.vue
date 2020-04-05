@@ -1,6 +1,8 @@
 <template>
     <div class="newsInfo-container">
+        <!-- 大标题 -->
         <h3 class="title">{{ newsInfo.title }}</h3>
+        <!-- 子标题 -->
         <p class="subtitle">
             <span>发表时间：{{ newsInfo.add_time | dataFormat}}</span>
             <span>点击：{{ newsInfo.click }}次</span>
@@ -9,12 +11,17 @@
         <!-- 隔开 -->
         <hr/>
 
+        <!-- 内容区域 -->
         <div class="content" v-html="newsInfo.content"></div>
+
+        <!-- 评论子组件区域 -->
+        <comment :id="this.id"></comment>
     </div>
 </template>
 
 <script>
 import { Toast } from 'mint-ui'
+import Comment from './../subcomponents/comment.vue'
 
 export default {
     name: 'NewsInfo',
@@ -25,6 +32,10 @@ export default {
             // 新闻对象
             newsInfo: []
         }
+    },
+    // 将组件进行注册
+    components: {
+        Comment
     },
     created () {
         this.getNewsInfo()
