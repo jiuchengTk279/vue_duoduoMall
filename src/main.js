@@ -18,6 +18,8 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource)
 // 设置请求的根路径
 Vue.http.options.root = 'http://vue.studyit.io';
+// 全局设置 post 时候表单数据组织格式
+Vue.http.options.emulateJSON = true;
 
 // 导入 MUI 样式
 import './lib/mui/css/mui.min.css'
