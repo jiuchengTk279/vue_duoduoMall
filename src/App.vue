@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <!-- 顶部 Header 区域 -->
-    <mt-header fixed title="多多商城"></mt-header>
+    <mt-header fixed title="多多商城">
+      <span slot="left" @click="goBack" v-show="flag">
+        <mt-button icon="back">返回</mt-button>
+      </span>
+    </mt-header>
 
     <!-- 中间的路由 router-view 区域 -->
     <transition>
@@ -20,7 +24,7 @@
 			</router-link>
 			<router-link class="mui-tab-item" to="/shopCar">
 				<span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-					<span class="mui-badge" id="badge">0</span>
+					<span class="mui-badge" id="badge">{{ $store.getters.getAllCount }}</span>
 				</span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
@@ -34,6 +38,31 @@
 </template>
 
 <script>
+export default {
+  data() {
+    return {
+      flag: false
+    }
+  },
+  created () {
+    this.flag = this.$route.path === '/home' ? false : true
+  },
+  methods: {
+    // 点击后退
+    goBack () {
+      this.$router.go(-1)
+    }
+  },
+  watch: {
+    '$route.push'(newVal) {
+      if (newVal === '/home') {
+        this.flag = false
+      } else {
+        this.flag = true
+      }
+    }
+  }
+}
 </script>
 
 
