@@ -1,11 +1,13 @@
 <template>
     <div>
         <!-- 轮播图区域 -->
-        <mt-swipe :auto="4000" v-if="BannerList.length>0">
+        <!-- <mt-swipe :auto="4000" v-if="BannerList.length>0">
             <mt-swipe-item v-for="item in BannerList" :key="item.url">
                 <img :src="item.img" alt="">
             </mt-swipe-item>
-        </mt-swipe>
+        </mt-swipe> -->
+
+        <swiper :bannerList="BannerList" v-if="BannerList.length>0"></swiper>
 
         <mt-swipe :auto="4000" v-else>
             <mt-swipe-item>轮播图1</mt-swipe-item>
@@ -27,9 +29,11 @@
                     <div class="mui-media-body">图片分享</div>
                 </router-link>
             </li>
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link to="/home/goodsList">
                     <img src="../../images/menu3.png" alt="">
-                    <div class="mui-media-body">商品购买</div></a>
+                    <div class="mui-media-body">商品购买</div>
+                </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
                     <img src="../../images/menu4.png" alt="">
@@ -51,12 +55,16 @@
 
 <script>
 import { Toast } from 'mint-ui'
+import Swiper from '../subcomponents/Swiper.vue'
 
 export default {
     data() {
         return {
             BannerList: [] // 保存轮播图的数组
         }
+    },
+    components: {
+        Swiper
     },
     created () {
         this.getBanner()

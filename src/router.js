@@ -47,6 +47,26 @@ var router = new VueRouter({
       path: '/home/photoInfo/:id',
       name: 'PhotoInfo',
       component: () => import('./components/photo/PhotoInfo.vue')
+    },
+    {
+      path: '/home/goodsList',
+      name: 'GoodsList',
+      component: () => import('./components/goods/GoodsList.vue')
+    },
+    {
+      path: '/home/goodsInfo/:id',
+      name: 'GoodsInfo',
+      component: () => import('./components/goods/GoodsInfo.vue')
+    },
+    {
+      path: '/home/goodsDesc/:id',
+      name: 'GoodsDesc',
+      component: () => import('./components/goods/GoodsDesc.vue')
+    },
+    {
+      path: '/home/goodsComment/:id',
+      name: 'GoodsComment',
+      component: () => import('./components/goods/GoodsComment.vue')
     }
   ],
   linkActiveClass: 'mui-active' // 覆盖默认的路由高亮的类，默认的类是叫 router-link-active
